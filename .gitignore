@@ -1,0 +1,32 @@
+## Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+## NuGet
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+## OS files
+.DS_Store
+Thumbs.db
