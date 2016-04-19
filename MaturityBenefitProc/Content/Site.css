@@ -1,0 +1,204 @@
+/* MaturityBenefitProc - Life Insurance Maturity Benefit Processing */
+/* Color Scheme: Deep teal (#1a6b5a) primary, Gold (#c4973b) accent */
+
+:root {
+    --primary-color: #1a6b5a;
+    --primary-dark: #124a3e;
+    --primary-light: #2a8f78;
+    --accent-color: #c4973b;
+    --accent-light: #d4ab5e;
+    --bg-light: #f5f7f6;
+    --bg-white: #ffffff;
+    --text-dark: #2c3e36;
+    --text-muted: #6b7d74;
+    --border-color: #d1dbd6;
+    --danger-color: #c0392b;
+    --success-color: #27ae60;
+    --warning-color: #e67e22;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding-top: 50px;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar-maturity {
+    background-color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.navbar-maturity .navbar-brand {
+    color: var(--bg-white);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-maturity .navbar-nav > li > a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-maturity .navbar-nav > li > a:hover,
+.navbar-maturity .navbar-nav > .active > a {
+    color: var(--accent-light);
+    background-color: var(--primary-dark);
+}
+
+/* Page Layout */
+.page-header {
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    color: var(--primary-dark);
+}
+
+.content-panel {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Tables */
+.table-maturity {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-maturity thead th {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-weight: 500;
+    padding: 10px 14px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.4px;
+}
+
+.table-maturity tbody tr:nth-child(even) {
+    background-color: #f0f5f3;
+}
+
+.table-maturity tbody tr:hover {
+    background-color: #e4eeea;
+}
+
+.table-maturity td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.table-maturity .amount-col {
+    text-align: right;
+    font-family: 'Consolas', monospace;
+    font-weight: 500;
+}
+
+/* Forms */
+.form-maturity .form-group {
+    margin-bottom: 18px;
+}
+
+.form-maturity .control-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.form-maturity .form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 8px 12px;
+    transition: border-color 0.2s ease;
+}
+
+.form-maturity .form-control:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(26, 107, 90, 0.15);
+    outline: none;
+}
+
+.form-maturity .form-control.input-error {
+    border-color: var(--danger-color);
+}
+
+/* Buttons */
+.btn-maturity {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border: none;
+    padding: 9px 22px;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-maturity:hover {
+    background-color: var(--primary-dark);
+    color: var(--bg-white);
+}
+
+.btn-maturity-accent {
+    background-color: var(--accent-color);
+    color: var(--bg-white);
+    border: none;
+    padding: 9px 22px;
+    border-radius: 3px;
+}
+
+.btn-maturity-accent:hover {
+    background-color: #b08630;
+    color: var(--bg-white);
+}
+
+/* Status Badges */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.badge-pending { background-color: var(--warning-color); color: #fff; }
+.badge-approved { background-color: var(--success-color); color: #fff; }
+.badge-rejected { background-color: var(--danger-color); color: #fff; }
+.badge-disbursed { background-color: var(--primary-color); color: #fff; }
+.badge-processing { background-color: var(--accent-color); color: #fff; }
+
+/* Policy Summary Card */
+.policy-card {
+    border-left: 4px solid var(--accent-color);
+    padding: 16px 20px;
+    background-color: #fdfbf7;
+    margin-bottom: 16px;
+}
+
+.policy-card .policy-number {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.policy-card .maturity-amount {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Consolas', monospace;
+}
+
+/* Footer */
+.footer-maturity {
+    background-color: var(--primary-dark);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85em;
+}
