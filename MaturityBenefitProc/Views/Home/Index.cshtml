@@ -1,0 +1,157 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-12">
+        <h2>Maturity Benefit Processing Dashboard</h2>
+        <p class="text-muted">Overview of policies approaching maturity, active claims, and disbursement status.</p>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Policies Maturing</h4>
+            </div>
+            <div class="panel-body text-center">
+                <h2 style="color: #2980b9;">@ViewBag.TotalPoliciesMaturing</h2>
+                <p class="text-muted">Within next 90 days</p>
+            </div>
+            <div class="panel-footer text-center">
+                <a href="@Url.Action("Index", "Policy")">View All Policies &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4 class="panel-title">Pending Claims</h4>
+            </div>
+            <div class="panel-body text-center">
+                <h2 style="color: #e67e22;">@ViewBag.PendingClaims</h2>
+                <p class="text-muted">Awaiting processing</p>
+            </div>
+            <div class="panel-footer text-center">
+                <a href="@Url.Action("Index", "Claim")">View All Claims &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title">Disbursed This Month</h4>
+            </div>
+            <div class="panel-body text-center">
+                <h2 style="color: #27ae60;">@ViewBag.DisbursedThisMonth</h2>
+                <p class="text-muted">Payments completed</p>
+            </div>
+            <div class="panel-footer text-center">
+                <a href="@Url.Action("Index", "Disbursement")">View Disbursements &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4 class="panel-title">Total Disbursed Amount</h4>
+            </div>
+            <div class="panel-body text-center">
+                <h2 style="color: #2c3e50;">@String.Format("{0:C0}", ViewBag.TotalDisbursedAmount)</h2>
+                <p class="text-muted">Current month</p>
+            </div>
+            <div class="panel-footer text-center">
+                <a href="@Url.Action("DisbursementReport", "Report")">View Report &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Processing Metrics</strong></div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <tr><td>Avg. Processing Days</td><td class="text-right"><strong>@ViewBag.AvgProcessingDays</strong></td></tr>
+                    <tr><td>Rejection Rate</td><td class="text-right"><strong>@ViewBag.RejectionRate%</strong></td></tr>
+                    <tr><td>Maturity Alerts</td><td class="text-right"><span class="label label-warning">@ViewBag.MaturityAlertCount</span></td></tr>
+                    <tr><td>Overdue Disbursements</td><td class="text-right"><span class="label label-danger">@ViewBag.OverdueDisbursements</span></td></tr>
+                    <tr><td>TDS Filing Pending</td><td class="text-right"><span class="label label-info">@ViewBag.TdsFilingPending</span></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Recent Activity</strong></div>
+            <div class="panel-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Type</th>
+                            <th>Reference</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-muted">@DateTime.UtcNow.AddMinutes(-15).ToString("dd-MMM HH:mm")</td>
+                            <td><span class="label label-info">Claim</span></td>
+                            <td>MC201703-00142</td>
+                            <td>Maturity claim submitted for POL20020156</td>
+                            <td><span class="label label-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">@DateTime.UtcNow.AddMinutes(-45).ToString("dd-MMM HH:mm")</td>
+                            <td><span class="label label-success">Disbursement</span></td>
+                            <td>UTR20170315-00089</td>
+                            <td>NEFT payment of Rs. 6,33,600 settled</td>
+                            <td><span class="label label-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">@DateTime.UtcNow.AddHours(-2).ToString("dd-MMM HH:mm")</td>
+                            <td><span class="label label-primary">Approval</span></td>
+                            <td>MC201703-00138</td>
+                            <td>Claim approved by Regional Head (West Zone)</td>
+                            <td><span class="label label-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">@DateTime.UtcNow.AddHours(-3).ToString("dd-MMM HH:mm")</td>
+                            <td><span class="label label-danger">Alert</span></td>
+                            <td>POL19980234</td>
+                            <td>Maturity date approaching - nominee details incomplete</td>
+                            <td><span class="label label-danger">Action Required</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">@DateTime.UtcNow.AddHours(-5).ToString("dd-MMM HH:mm")</td>
+                            <td><span class="label label-default">TDS</span></td>
+                            <td>TDS-2017Q4-0045</td>
+                            <td>TDS certificate generated for PAN ABCPK1234D</td>
+                            <td><span class="label label-success">Generated</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Quick Actions</strong></div>
+            <div class="panel-body">
+                <a href="@Url.Action("Create", "Claim")" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> New Claim</a>
+                <a href="@Url.Action("Search", "Policy")" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search Policy</a>
+                <a href="@Url.Action("Track", "Disbursement")" class="btn btn-success"><span class="glyphicon glyphicon-transfer"></span> Track Payment</a>
+                <a href="@Url.Action("PendingClaimsReport", "Report")" class="btn btn-warning"><span class="glyphicon glyphicon-time"></span> Pending Claims</a>
+                <a href="@Url.Action("MaturitySchedule", "Policy")" class="btn btn-default"><span class="glyphicon glyphicon-calendar"></span> Maturity Schedule</a>
+            </div>
+        </div>
+    </div>
+</div>
