@@ -1,0 +1,186 @@
+@model MaturityBenefitProc.Models.Policy
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = string.Format("Policy Details - {0}", Model.PolicyNumber);
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-8">
+        <h2>Policy Details <small class="text-muted">@Model.PolicyNumber</small></h2>
+    </div>
+    <div class="col-md-4 text-right" style="margin-top: 20px;">
+        <a href="@Url.Action("Index", "Policy")" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to List</a>
+        @if (Model.IsMatured)
+        {
+            <a href="@Url.Action("Create", "Claim", new { policyNumber = Model.PolicyNumber })" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Initiate Claim
+            </a>
+        }
+    </div>
+</div>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><strong>Policy Information</strong></div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Policy Number</dt>
+                    <dd><strong>@Model.PolicyNumber</strong></dd>
+                    <dt>Policy Type</dt>
+                    <dd><span class="label label-info">@Model.PolicyType</span></dd>
+                    <dt>Status</dt>
+                    <dd>
+                        @if (Model.PolicyStatus == MaturityBenefitProc.Models.PolicyStatus.Matured)
+                        {
+                            <span class="label label-success">Matured</span>
+                        }
+                        else
+                        {
+                            <span class="label label-primary">@Model.PolicyStatus</span>
+                        }
+                    </dd>
+                    <dt>Sum Assured</dt>
+                    <dd><strong>Rs. @String.Format("{0:N2}", Model.SumAssured)</strong></dd>
+                    <dt>Premium Amount</dt>
+                    <dd>Rs. @String.Format("{0:N2}", Model.PremiumAmount)</dd>
+                    <dt>Premium Frequency</dt>
+                    <dd>@Model.PremiumFrequency</dd>
+                    <dt>Policy Term</dt>
+                    <dd>@Model.PolicyTerm years</dd>
+                    <dt>Premium Paying Term</dt>
+                    <dd>@Model.PremiumPayingTerm years</dd>
+                    <dt>Commencement Date</dt>
+                    <dd>@Model.CommencementDate.ToString("dd-MMM-yyyy")</dd>
+                    <dt>Maturity Date</dt>
+                    <dd><strong>@Model.MaturityDate.ToString("dd-MMM-yyyy")</strong></dd>
+                    <dt>Branch Code</dt>
+                    <dd>@Model.BranchCode</dd>
+                    <dt>Years Completed</dt>
+                    <dd>@Model.YearsCompleted of @Model.PolicyTerm</dd>
+                    <dt>Risk Category</dt>
+                    <dd>@(Model.RiskCategory ?? "Standard")</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading"><strong>Maturity Benefit Calculation</strong></div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <tr>
+                        <td>Sum Assured</td>
+                        <td class="text-right">Rs. @String.Format("{0:N2}", Model.SumAssured)</td>
+                    </tr>
+                    <tr>
+                        <td>Bonus Accrued (Reversionary)</td>
+                        <td class="text-right">Rs. @String.Format("{0:N2}", ViewBag.BonusAccrued)</td>
+                    </tr>
+                    <tr>
+                        <td>Final Additional Bonus (FAB)</td>
+                        <td class="text-right">Rs. @String.Format("{0:N2}", ViewBag.FinalAdditionalBonus)</td>
+                    </tr>
+                    <tr class="success" style="font-weight: bold; font-size: 16px;">
+                        <td>Total Maturity Benefit</td>
+                        <td class="text-right">Rs. @String.Format("{0:N2}", ViewBag.TotalMaturityBenefit)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Premium Payment Summary</strong></div>
+            <div class="panel-body">
+                <div class="progress" style="height: 25px;">
+                    @{
+                        int paidPercent = (int)ViewBag.PremiumsPaid > 0 ? ((int)ViewBag.PremiumsPaid * 100 / (int)ViewBag.PremiumsExpected) : 0;
+                    }
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: @paidPercent%; line-height: 25px;">
+                        @ViewBag.PremiumsPaid / @ViewBag.PremiumsExpected premiums paid
+                    </div>
+                </div>
+                <p class="text-muted" style="margin-top: 5px;">
+                    Last premium received: @(Model.LastPremiumDate.HasValue ? Model.LastPremiumDate.Value.ToString("dd-MMM-yyyy") : "N/A")
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Nominees</strong></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nominee Name</th>
+                            <th>Relationship</th>
+                            <th>Date of Birth</th>
+                            <th>Share (%)</th>
+                            <th>Guardian (if minor)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Nominees != null && Model.Nominees.Any())
+                        {
+                            int idx = 1;
+                            foreach (var nominee in Model.Nominees)
+                            {
+                                <tr>
+                                    <td>@idx</td>
+                                    <td>@nominee.NomineeName</td>
+                                    <td>@nominee.Relationship</td>
+                                    <td>@nominee.DateOfBirth.ToString("dd-MMM-yyyy")</td>
+                                    <td>@nominee.SharePercentage%</td>
+                                    <td>@(nominee.GuardianName ?? "-")</td>
+                                </tr>
+                                idx++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted" style="padding: 20px;">
+                                    <span class="glyphicon glyphicon-warning-sign text-warning"></span>
+                                    No nominees registered for this policy. Nominee assignment is required before claim processing.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Premium Payment History (Last 10)</strong></div>
+            <div class="table-responsive">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Due Date</th>
+                            <th>Payment Date</th>
+                            <th class="text-right">Amount</th>
+                            <th>Mode</th>
+                            <th>Receipt No.</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center text-muted">
+                            <td colspan="6" style="padding: 20px;">Premium history will be loaded from the policy administration system.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
