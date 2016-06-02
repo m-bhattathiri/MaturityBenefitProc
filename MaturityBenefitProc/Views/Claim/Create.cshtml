@@ -1,0 +1,154 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = string.Format("Initiate Maturity Claim - {0}", ViewBag.PolicyNumber);
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-12">
+        <h2>Initiate Maturity Claim <small class="text-muted">@ViewBag.PolicyNumber</small></h2>
+        <p class="text-muted">Complete the form below to submit a maturity benefit claim for processing.</p>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading"><strong>Benefit Calculation Summary</strong></div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <tr><td>Sum Assured</td><td class="text-right"><strong>Rs. @String.Format("{0:N2}", ViewBag.SumAssured)</strong></td></tr>
+                    <tr><td>Accrued Bonus</td><td class="text-right">Rs. @String.Format("{0:N2}", ViewBag.BonusAmount)</td></tr>
+                    <tr><td>Final Additional Bonus</td><td class="text-right">Rs. @String.Format("{0:N2}", ViewBag.FinalAdditionalBonus)</td></tr>
+                    <tr class="info"><td><strong>Gross Payable</strong></td><td class="text-right"><strong>Rs. @String.Format("{0:N2}", ViewBag.TotalPayable)</strong></td></tr>
+                    <tr class="warning"><td>TDS u/s 194DA (@1%)</td><td class="text-right">- Rs. @String.Format("{0:N2}", ViewBag.TdsApplicable)</td></tr>
+                    <tr class="success" style="font-size: 15px;"><td><strong>Net Payable</strong></td><td class="text-right"><strong>Rs. @String.Format("{0:N2}", ViewBag.NetPayable)</strong></td></tr>
+                </table>
+                <p class="text-muted" style="font-size: 11px;">
+                    * TDS is deducted under Section 194DA of the Income Tax Act on the amount exceeding
+                    the total premiums paid, if total maturity proceeds exceed Rs. 1,00,000.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        @using (Html.BeginForm("Submit", "Claim", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="PolicyNumber" value="@ViewBag.PolicyNumber" />
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Claimant Details</strong></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Policy Number</label>
+                        <div class="col-md-8">
+                            <p class="form-control-static"><strong>@ViewBag.PolicyNumber</strong></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ClaimantName" class="col-md-4 control-label">Claimant Name *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="ClaimantName" name="ClaimantName" required placeholder="Full name as per policy" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="PanNumber" class="col-md-4 control-label">PAN Number *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="PanNumber" name="PanNumber" required
+                                   pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" placeholder="ABCPK1234D" maxlength="10"
+                                   title="Enter valid PAN (e.g., ABCPK1234D)" />
+                            <span class="help-block">Required for TDS computation. 20% TDS will be deducted if PAN is not provided.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="MobileNumber" class="col-md-4 control-label">Mobile Number *</label>
+                        <div class="col-md-8">
+                            <input type="tel" class="form-control" id="MobileNumber" name="MobileNumber" required
+                                   pattern="[6-9][0-9]{9}" placeholder="9876543210" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="EmailAddress" class="col-md-4 control-label">Email Address</label>
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" id="EmailAddress" name="EmailAddress"
+                                   placeholder="claimant@example.com" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Payment Details</strong></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="PaymentMode" class="col-md-4 control-label">Payment Mode *</label>
+                        <div class="col-md-8">
+                            @Html.DropDownList("PaymentMode", ViewBag.PaymentModes as SelectList, "-- Select Payment Mode --",
+                                new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BankName" class="col-md-4 control-label">Bank Name *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="BankName" name="BankName" required
+                                   placeholder="State Bank of India" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BankAccountNumber" class="col-md-4 control-label">Account Number *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="BankAccountNumber" name="BankAccountNumber"
+                                   required placeholder="Enter bank account number" maxlength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ConfirmAccountNumber" class="col-md-4 control-label">Confirm Account Number *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="ConfirmAccountNumber" name="ConfirmAccountNumber"
+                                   required placeholder="Re-enter account number" maxlength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="IfscCode" class="col-md-4 control-label">IFSC Code *</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="IfscCode" name="IfscCode" required
+                                   pattern="[A-Z]{4}0[A-Z0-9]{6}" placeholder="SBIN0001234" maxlength="11"
+                                   title="Enter valid IFSC code (e.g., SBIN0001234)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BranchAddress" class="col-md-4 control-label">Branch Address</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="BranchAddress" name="BranchAddress" rows="2"
+                                      placeholder="Bank branch address for records"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Declaration</strong></div>
+                <div class="panel-body">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="Declaration" value="true" required />
+                            I declare that the details furnished above are true and correct. I authorize the deduction
+                            of applicable TDS under Section 194DA of the Income Tax Act, 1961, and the transfer of
+                            the net maturity benefit to the bank account specified above.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <a href="@Url.Action("Index", "Claim")" class="btn btn-default btn-lg">Cancel</a>
+                    <button type="submit" class="btn btn-success btn-lg" style="margin-left: 10px;">
+                        <span class="glyphicon glyphicon-ok"></span> Submit Maturity Claim
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

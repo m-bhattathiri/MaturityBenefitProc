@@ -1,0 +1,105 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Maturity Claims";
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-8">
+        <h2>Maturity Claims</h2>
+        <p class="text-muted">Track and manage maturity benefit claim requests across all branches.</p>
+    </div>
+    <div class="col-md-4 text-right" style="margin-top: 20px;">
+        <a href="@Url.Action("Create", "Claim")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span> New Claim
+        </a>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-3">
+        <div class="well well-sm text-center">
+            <h4 class="text-warning">@ViewBag.PendingCount</h4>
+            <small>Pending</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center">
+            <h4 class="text-success">@ViewBag.ApprovedCount</h4>
+            <small>Approved</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center">
+            <h4 class="text-danger">@ViewBag.RejectedCount</h4>
+            <small>Rejected</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center">
+            <h4 class="text-info">@ViewBag.DisbursedCount</h4>
+            <small>Disbursed</small>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Claims Register</strong>
+                        <span class="badge">@ViewBag.TotalClaims</span>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="form-inline pull-right" method="get">
+                            <div class="form-group form-group-sm">
+                                <select name="status" class="form-control input-sm">
+                                    <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Statuses</option>
+                                    <option value="pending" @(ViewBag.StatusFilter == "pending" ? "selected" : "")>Pending</option>
+                                    <option value="verified" @(ViewBag.StatusFilter == "verified" ? "selected" : "")>Verified</option>
+                                    <option value="approved" @(ViewBag.StatusFilter == "approved" ? "selected" : "")>Approved</option>
+                                    <option value="rejected" @(ViewBag.StatusFilter == "rejected" ? "selected" : "")>Rejected</option>
+                                    <option value="disbursed" @(ViewBag.StatusFilter == "disbursed" ? "selected" : "")>Disbursed</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <input type="date" name="from" class="form-control input-sm" value="@ViewBag.DateFrom" placeholder="From" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <input type="date" name="to" class="form-control input-sm" value="@ViewBag.DateTo" placeholder="To" />
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead style="background-color: #1a5276; color: white;">
+                        <tr>
+                            <th>Claim Number</th>
+                            <th>Policy Number</th>
+                            <th>Policyholder</th>
+                            <th class="text-right">Claim Amount</th>
+                            <th class="text-right">Net Payable</th>
+                            <th>Payment Mode</th>
+                            <th>Filed On</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="9" class="text-center text-muted" style="padding: 30px;">
+                                <span class="glyphicon glyphicon-info-sign"></span>
+                                No claims match the current filter criteria. Adjust filters or
+                                <a href="@Url.Action("Create", "Claim")">create a new claim</a>.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
