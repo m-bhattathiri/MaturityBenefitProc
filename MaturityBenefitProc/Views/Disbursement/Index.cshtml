@@ -1,0 +1,127 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Disbursement Tracking";
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-8">
+        <h2>Disbursement Tracking</h2>
+        <p class="text-muted">Monitor payment processing status for approved maturity benefit claims.</p>
+    </div>
+    <div class="col-md-4 text-right" style="margin-top: 20px;">
+        <a href="@Url.Action("Track", "Disbursement")" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span> Track by UTR
+        </a>
+        <a href="@Url.Action("ChequeStatus", "Disbursement")" class="btn btn-default">
+            <span class="glyphicon glyphicon-file"></span> Cheque Status
+        </a>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-3">
+        <div class="well well-sm text-center" style="border-left: 4px solid #f39c12;">
+            <h4 class="text-warning">@ViewBag.PendingCount</h4>
+            <small>Pending</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center" style="border-left: 4px solid #27ae60;">
+            <h4 class="text-success">@ViewBag.ProcessedCount</h4>
+            <small>Processed</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center" style="border-left: 4px solid #c0392b;">
+            <h4 class="text-danger">@ViewBag.FailedCount</h4>
+            <small>Failed</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well well-sm text-center" style="border-left: 4px solid #2980b9;">
+            <h4 style="color: #2980b9;">Rs. @String.Format("{0:N0}", ViewBag.TotalDisbursedAmount)</h4>
+            <small>Total Disbursed</small>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong>Disbursement Register</strong>
+                        <span class="badge">@ViewBag.TotalRecords</span>
+                    </div>
+                    <div class="col-md-8">
+                        <form class="form-inline pull-right" method="get">
+                            <div class="form-group form-group-sm">
+                                <select name="status" class="form-control input-sm">
+                                    <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Statuses</option>
+                                    <option value="pending" @(ViewBag.StatusFilter == "pending" ? "selected" : "")>Pending</option>
+                                    <option value="processing" @(ViewBag.StatusFilter == "processing" ? "selected" : "")>Processing</option>
+                                    <option value="settled" @(ViewBag.StatusFilter == "settled" ? "selected" : "")>Settled</option>
+                                    <option value="failed" @(ViewBag.StatusFilter == "failed" ? "selected" : "")>Failed</option>
+                                    <option value="reversed" @(ViewBag.StatusFilter == "reversed" ? "selected" : "")>Reversed</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <select name="mode" class="form-control input-sm">
+                                    <option value="all" @(ViewBag.PaymentMode == "all" ? "selected" : "")>All Modes</option>
+                                    <option value="neft" @(ViewBag.PaymentMode == "neft" ? "selected" : "")>NEFT</option>
+                                    <option value="rtgs" @(ViewBag.PaymentMode == "rtgs" ? "selected" : "")>RTGS</option>
+                                    <option value="cheque" @(ViewBag.PaymentMode == "cheque" ? "selected" : "")>Cheque</option>
+                                    <option value="imps" @(ViewBag.PaymentMode == "imps" ? "selected" : "")>IMPS</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead style="background-color: #1a5276; color: white;">
+                        <tr>
+                            <th>Disbursement ID</th>
+                            <th>Claim No.</th>
+                            <th>Policy No.</th>
+                            <th>Beneficiary</th>
+                            <th class="text-right">Amount</th>
+                            <th>Mode</th>
+                            <th>UTR / Cheque No.</th>
+                            <th>Initiated</th>
+                            <th>Settled</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="11" class="text-center text-muted" style="padding: 30px;">
+                                <span class="glyphicon glyphicon-info-sign"></span>
+                                No disbursement records found for the selected filters.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <p class="text-muted">Page @ViewBag.CurrentPage | @ViewBag.PageSize records per page</p>
+    </div>
+    <div class="col-md-6 text-right">
+        <nav>
+            <ul class="pagination pagination-sm">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
