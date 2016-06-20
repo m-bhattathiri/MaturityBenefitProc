@@ -81,6 +81,16 @@
     <Compile Include="Helpers\EndowmentPlan\*.cs" />
     <Compile Include="Helpers\MoneyBackPlan\*.cs" />
     <Compile Include="Helpers\ClaimSettlement\*.cs" />
+    <Compile Include="Helpers\AnnuityProcessing\*.cs" />
+    <Compile Include="Helpers\BeneficiaryAndLegalHeirs\*.cs" />
+    <Compile Include="Helpers\Document_Workflow_Management\*.cs" />
+    <Compile Include="Helpers\Fund_Value_Unit_Linked_Plans\*.cs" />
+    <Compile Include="Helpers\International_NRI_Processing\*.cs" />
+    <Compile Include="Helpers\PolicyLoanAndRecovery\*.cs" />
+    <Compile Include="Helpers\Reinsurance_Pool_Management\*.cs" />
+    <Compile Include="Helpers\SurrenderProcessing\*.cs" />
+    <Compile Include="Helpers\TaxDeductionsAndCompliance\*.cs" />
+    <Compile Include="Helpers\TerminalBonusAndLoyaltyAdditions\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
