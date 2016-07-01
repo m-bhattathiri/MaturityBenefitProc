@@ -1,0 +1,170 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Reports & Analytics";
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-12">
+        <h2>Reports & Analytics</h2>
+        <p class="text-muted">Generate and download operational reports for maturity benefit processing.</p>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-stats"></span> Maturity Benefit Report</h4>
+            </div>
+            <div class="panel-body">
+                <p>Summary of policies matured and benefits processed within a specified date range.
+                   Includes policy type breakdown, average benefit amounts, and branch-wise statistics.</p>
+                <form action="@Url.Action("MaturityReport", "Report")" method="get">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>From Date</label>
+                                <input type="date" name="from" class="form-control" value="@DateTime.UtcNow.AddMonths(-1).ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>To Date</label>
+                                <input type="date" name="to" class="form-control" value="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-download"></span> Generate Maturity Report
+                    </button>
+                </form>
+                <p class="text-muted" style="margin-top: 8px; font-size: 11px;">
+                    Last generated: @ViewBag.LastGeneratedMaturity
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-transfer"></span> Disbursement Report</h4>
+            </div>
+            <div class="panel-body">
+                <p>Payment disbursement details including NEFT/RTGS/Cheque breakdowns, settlement times,
+                   failed transactions, and retry statistics for the selected period.</p>
+                <form action="@Url.Action("DisbursementReport", "Report")" method="get">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>From Date</label>
+                                <input type="date" name="from" class="form-control" value="@DateTime.UtcNow.AddMonths(-1).ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>To Date</label>
+                                <input type="date" name="to" class="form-control" value="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">
+                        <span class="glyphicon glyphicon-download"></span> Generate Disbursement Report
+                    </button>
+                </form>
+                <p class="text-muted" style="margin-top: 8px; font-size: 11px;">
+                    Last generated: @ViewBag.LastGeneratedDisbursement
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-certificate"></span> TDS Report (Section 194DA)</h4>
+            </div>
+            <div class="panel-body">
+                <p>Tax Deducted at Source report for maturity proceeds under Section 194DA of the
+                   Income Tax Act. Quarterly and annual breakdowns for filing with IT Department.</p>
+                <form action="@Url.Action("TdsReport", "Report")" method="get">
+                    <div class="form-group">
+                        <label>Financial Year</label>
+                        <select name="financialYear" class="form-control">
+                            @if (ViewBag.AvailableFinancialYears != null)
+                            {
+                                foreach (string fy in ViewBag.AvailableFinancialYears)
+                                {
+                                    <option value="@fy">@fy</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-block">
+                        <span class="glyphicon glyphicon-download"></span> Generate TDS Report
+                    </button>
+                </form>
+                <p class="text-muted" style="margin-top: 8px; font-size: 11px;">
+                    Last generated: @ViewBag.LastGeneratedTds
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-time"></span> Pending Claims Report</h4>
+            </div>
+            <div class="panel-body">
+                <p>Aging analysis of pending maturity claims. Identifies claims awaiting verification,
+                   approval, or disbursement with SLA breach indicators and escalation requirements.</p>
+                <div style="margin-top: 20px;">
+                    <a href="@Url.Action("PendingClaimsReport", "Report")" class="btn btn-danger btn-block">
+                        <span class="glyphicon glyphicon-download"></span> Generate Pending Claims Report
+                    </a>
+                </div>
+                <div class="well well-sm" style="margin-top: 12px;">
+                    <small>
+                        <strong>SLA Thresholds:</strong><br />
+                        Verification: 3 business days |
+                        Approval: 5 business days |
+                        Disbursement: 7 business days |
+                        Escalation: 15 business days
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Report Download History</strong></div>
+            <div class="panel-body">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Report Name</th>
+                            <th>Period</th>
+                            <th>Generated By</th>
+                            <th>Generated On</th>
+                            <th>Format</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center text-muted" style="padding: 20px;">
+                                No reports have been generated in this session. Select a report type above to begin.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
