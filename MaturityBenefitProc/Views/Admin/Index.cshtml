@@ -1,0 +1,115 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Administration Dashboard";
+}
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-12">
+        <h2>Administration Dashboard</h2>
+        <p class="text-muted">System monitoring, user management, and configuration for MaturityBenefitProc.</p>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-3">
+        <div class="panel panel-success">
+            <div class="panel-body text-center">
+                <h3>@ViewBag.SystemUptime</h3>
+                <small class="text-muted">System Uptime</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-body text-center">
+                <h3>@ViewBag.ActiveSessions</h3>
+                <small class="text-muted">Active Sessions</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-warning">
+            <div class="panel-body text-center">
+                <h3>@ViewBag.PendingApprovals</h3>
+                <small class="text-muted">Pending Approvals</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-body text-center">
+                <h3>@ViewBag.UnresolvedAlerts</h3>
+                <small class="text-muted">Unresolved Alerts</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Quick Actions</strong></div>
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="@Url.Action("Users", "Admin")" class="list-group-item">
+                        <span class="glyphicon glyphicon-user"></span> User Management
+                        <span class="badge">@ViewBag.TotalUsers users</span>
+                    </a>
+                    <a href="@Url.Action("AuditLog", "Admin")" class="list-group-item">
+                        <span class="glyphicon glyphicon-list-alt"></span> Audit Trail
+                        <span class="badge">View Logs</span>
+                    </a>
+                    <a href="@Url.Action("SystemConfig", "Admin")" class="list-group-item">
+                        <span class="glyphicon glyphicon-cog"></span> System Configuration
+                        <span class="badge">Settings</span>
+                    </a>
+                    <a href="@Url.Action("ReconciliationDashboard", "Admin")" class="list-group-item">
+                        <span class="glyphicon glyphicon-retweet"></span> Reconciliation Dashboard
+                        <span class="badge">Reconcile</span>
+                    </a>
+                    <a href="@Url.Action("PendingClaimsReport", "Report")" class="list-group-item">
+                        <span class="glyphicon glyphicon-time"></span> Pending Claims Report
+                        <span class="badge">Reports</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>System Information</strong></div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <tr><td>Application</td><td><strong>MaturityBenefitProc v@ViewBag.ApplicationVersion</strong></td></tr>
+                    <tr><td>Environment</td><td><span class="label label-success">@ViewBag.EnvironmentName</span></td></tr>
+                    <tr><td>.NET Framework</td><td>@ViewBag.DotNetVersion</td></tr>
+                    <tr><td>Server</td><td>@ViewBag.ServerName</td></tr>
+                    <tr><td>Database Size</td><td>@ViewBag.DatabaseSize</td></tr>
+                    <tr><td>Document Storage</td><td>@ViewBag.DocumentStorageUsed</td></tr>
+                    <tr><td>Queue Depth</td><td>@ViewBag.QueueDepth messages</td></tr>
+                    <tr><td>Avg. Response Time</td><td>@ViewBag.AverageResponseTime</td></tr>
+                    <tr><td>Last Backup</td><td>@ViewBag.LastBackup</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Recent System Alerts</strong></div>
+            <div class="panel-body">
+                <div class="alert alert-warning" style="margin-bottom: 8px; padding: 8px 12px; font-size: 13px;">
+                    <strong>Warning:</strong> 3 disbursement retries exceeded threshold in last 24 hours.
+                    <br /><small class="text-muted">2 hours ago</small>
+                </div>
+                <div class="alert alert-info" style="margin-bottom: 8px; padding: 8px 12px; font-size: 13px;">
+                    <strong>Info:</strong> Scheduled batch processing completed. 47 policies processed.
+                    <br /><small class="text-muted">6 hours ago</small>
+                </div>
+                <div class="alert alert-danger" style="margin-bottom: 0; padding: 8px 12px; font-size: 13px;">
+                    <strong>Critical:</strong> NEFT gateway timeout detected. Auto-retry configured.
+                    <br /><small class="text-muted">1 day ago - Resolved</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
