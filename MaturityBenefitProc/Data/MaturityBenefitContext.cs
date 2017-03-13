@@ -25,12 +25,12 @@ namespace MaturityBenefitProc.Data
                 .HasKey(p => p.PolicyId)
                 .HasRequired(p => p.Policyholder)
                 .WithMany(ph => ph.Policies)
-                .HasForeignKey(p => p.PolicyholderId);
+                .HasForeignKey(p => p.PolicyholderCif);
 
             modelBuilder.Entity<Policy>()
                 .HasMany(p => p.Nominees)
                 .WithRequired(n => n.Policy)
-                .HasForeignKey(n => n.PolicyId);
+                .HasForeignKey(n => n.PolicyNumber);
 
             modelBuilder.Entity<Policy>()
                 .Property(p => p.SumAssured)
@@ -40,33 +40,29 @@ namespace MaturityBenefitProc.Data
                 .Property(p => p.PremiumAmount)
                 .HasPrecision(18, 2);
 
-            modelBuilder.Entity<Policy>()
-                .Property(p => p.MaturityAmount)
-                .HasPrecision(18, 2);
-
             modelBuilder.Entity<MaturityClaim>()
                 .HasKey(c => c.ClaimId)
                 .HasRequired(c => c.Policy)
-                .WithMany(p => p.MaturityClaims)
-                .HasForeignKey(c => c.PolicyId);
+                .WithMany()
+                .HasForeignKey(c => c.PolicyNumber);
 
             modelBuilder.Entity<MaturityClaim>()
-                .Property(c => c.ClaimAmount)
+                .Property(c => c.TotalMaturityAmount)
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<MaturityClaim>()
-                .Property(c => c.TaxDeducted)
+                .Property(c => c.TdsAmount)
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<MaturityClaim>()
-                .Property(c => c.NetPayable)
+                .Property(c => c.NetPayableAmount)
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<DisbursementRecord>()
                 .HasKey(d => d.DisbursementId)
                 .HasRequired(d => d.MaturityClaim)
-                .WithMany(c => c.DisbursementRecords)
-                .HasForeignKey(d => d.ClaimId);
+                .WithMany()
+                .HasForeignKey(d => d.ClaimNumber);
 
             modelBuilder.Entity<DisbursementRecord>()
                 .Property(d => d.Amount)
@@ -76,7 +72,7 @@ namespace MaturityBenefitProc.Data
                 .HasKey(b => b.BankDetailId)
                 .HasRequired(b => b.Policyholder)
                 .WithMany(ph => ph.BankDetails)
-                .HasForeignKey(b => b.PolicyholderId);
+                .HasForeignKey(b => b.CifNumber);
 
             modelBuilder.Entity<Nominee>()
                 .HasKey(n => n.NomineeId);
