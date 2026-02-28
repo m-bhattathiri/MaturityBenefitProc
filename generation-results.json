@@ -1,0 +1,661 @@
+[
+  {
+    "service": "PolicySurrenderService",
+    "subdomain": "SurrenderProcessing",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2468,
+    "testFileCount": 5,
+    "totalAssertions": 573,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "SurrenderValueCalculationService",
+    "subdomain": "SurrenderProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2274,
+    "testFileCount": 4,
+    "totalAssertions": 497,
+    "totalSetups": 28,
+    "totalVerifies": 29,
+    "issues": []
+  },
+  {
+    "service": "SurrenderPenaltyService",
+    "subdomain": "SurrenderProcessing",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1719,
+    "testFileCount": 3,
+    "totalAssertions": 369,
+    "totalSetups": 25,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "PartialSurrenderService",
+    "subdomain": "SurrenderProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2200,
+    "testFileCount": 4,
+    "totalAssertions": 478,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "SurrenderDisbursementService",
+    "subdomain": "SurrenderProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2469,
+    "testFileCount": 4,
+    "totalAssertions": 566,
+    "totalSetups": 27,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "AnnuityCalculationService",
+    "subdomain": "AnnuityProcessing",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2446,
+    "testFileCount": 5,
+    "totalAssertions": 568,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "AnnuityPayoutScheduleService",
+    "subdomain": "AnnuityProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2158,
+    "testFileCount": 4,
+    "totalAssertions": 467,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "DeferredAnnuityService",
+    "subdomain": "AnnuityProcessing",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1649,
+    "testFileCount": 3,
+    "totalAssertions": 386,
+    "totalSetups": 24,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "PensionCommutationService",
+    "subdomain": "AnnuityProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2273,
+    "testFileCount": 4,
+    "totalAssertions": 514,
+    "totalSetups": 27,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "AnnuityLifeCertificateService",
+    "subdomain": "AnnuityProcessing",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1703,
+    "testFileCount": 3,
+    "totalAssertions": 332,
+    "totalSetups": 25,
+    "totalVerifies": 27,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "JointLifeAnnuityService",
+    "subdomain": "AnnuityProcessing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2218,
+    "testFileCount": 4,
+    "totalAssertions": 501,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "TdsCalculationService",
+    "subdomain": "TaxDeductionsAndCompliance",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2508,
+    "testFileCount": 5,
+    "totalAssertions": 593,
+    "totalSetups": 35,
+    "totalVerifies": 35,
+    "issues": []
+  },
+  {
+    "service": "CapitalGainsTaxService",
+    "subdomain": "TaxDeductionsAndCompliance",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2353,
+    "testFileCount": 4,
+    "totalAssertions": 508,
+    "totalSetups": 28,
+    "totalVerifies": 28,
+    "issues": []
+  },
+  {
+    "service": "TaxExemptionEvaluationService",
+    "subdomain": "TaxDeductionsAndCompliance",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1617,
+    "testFileCount": 3,
+    "totalAssertions": 323,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "FatcaComplianceService",
+    "subdomain": "TaxDeductionsAndCompliance",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1622,
+    "testFileCount": 3,
+    "totalAssertions": 347,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "TaxReportingService",
+    "subdomain": "TaxDeductionsAndCompliance",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2332,
+    "testFileCount": 4,
+    "totalAssertions": 513,
+    "totalSetups": 28,
+    "totalVerifies": 28,
+    "issues": []
+  },
+  {
+    "service": "UlipNavCalculationService",
+    "subdomain": "Fund_Value_Unit_Linked_Plans",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2594,
+    "testFileCount": 5,
+    "totalAssertions": 550,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "UnitCancellationService",
+    "subdomain": "Fund_Value_Unit_Linked_Plans",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2090,
+    "testFileCount": 4,
+    "totalAssertions": 430,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "FundSwitchingService",
+    "subdomain": "Fund_Value_Unit_Linked_Plans",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2173,
+    "testFileCount": 4,
+    "totalAssertions": 521,
+    "totalSetups": 27,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "UlipMaturityService",
+    "subdomain": "Fund_Value_Unit_Linked_Plans",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2504,
+    "testFileCount": 5,
+    "totalAssertions": 557,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "MortalityChargeRefundService",
+    "subdomain": "Fund_Value_Unit_Linked_Plans",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1642,
+    "testFileCount": 3,
+    "totalAssertions": 340,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "OutstandingLoanRecoveryService",
+    "subdomain": "PolicyLoanAndRecovery",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2154,
+    "testFileCount": 4,
+    "totalAssertions": 467,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "LoanInterestCalculationService",
+    "subdomain": "PolicyLoanAndRecovery",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1648,
+    "testFileCount": 3,
+    "totalAssertions": 340,
+    "totalSetups": 25,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "MaturityLoanAdjustmentService",
+    "subdomain": "PolicyLoanAndRecovery",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2137,
+    "testFileCount": 4,
+    "totalAssertions": 487,
+    "totalSetups": 26,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "PolicyPledgeService",
+    "subdomain": "PolicyLoanAndRecovery",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1661,
+    "testFileCount": 3,
+    "totalAssertions": 352,
+    "totalSetups": 24,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "LoanDischargeService",
+    "subdomain": "PolicyLoanAndRecovery",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1443,
+    "testFileCount": 3,
+    "totalAssertions": 305,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)",
+      "Only 1443 lines (need 1500+)"
+    ]
+  },
+  {
+    "service": "TerminalBonusService",
+    "subdomain": "TerminalBonusAndLoyaltyAdditions",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2115,
+    "testFileCount": 4,
+    "totalAssertions": 480,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "LoyaltyAdditionService",
+    "subdomain": "TerminalBonusAndLoyaltyAdditions",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2283,
+    "testFileCount": 4,
+    "totalAssertions": 506,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "GuaranteedAdditionService",
+    "subdomain": "TerminalBonusAndLoyaltyAdditions",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2119,
+    "testFileCount": 4,
+    "totalAssertions": 482,
+    "totalSetups": 27,
+    "totalVerifies": 28,
+    "issues": []
+  },
+  {
+    "service": "VestedBonusService",
+    "subdomain": "TerminalBonusAndLoyaltyAdditions",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2594,
+    "testFileCount": 5,
+    "totalAssertions": 580,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "ReversionaryBonusService",
+    "subdomain": "TerminalBonusAndLoyaltyAdditions",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2091,
+    "testFileCount": 4,
+    "totalAssertions": 494,
+    "totalSetups": 27,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "LegalHeirValidationService",
+    "subdomain": "BeneficiaryAndLegalHeirs",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1623,
+    "testFileCount": 3,
+    "totalAssertions": 320,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "MinorNomineeTrusteeService",
+    "subdomain": "BeneficiaryAndLegalHeirs",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 1940,
+    "testFileCount": 4,
+    "totalAssertions": 439,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "BeneficiaryShareAllocationService",
+    "subdomain": "BeneficiaryAndLegalHeirs",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2485,
+    "testFileCount": 4,
+    "totalAssertions": 586,
+    "totalSetups": 29,
+    "totalVerifies": 29,
+    "issues": []
+  },
+  {
+    "service": "SuccessionCertificateService",
+    "subdomain": "BeneficiaryAndLegalHeirs",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1611,
+    "testFileCount": 3,
+    "totalAssertions": 352,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "DisputeResolutionService",
+    "subdomain": "BeneficiaryAndLegalHeirs",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2504,
+    "testFileCount": 5,
+    "totalAssertions": 510,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "NriRepatriationService",
+    "subdomain": "International_NRI_Processing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2422,
+    "testFileCount": 4,
+    "totalAssertions": 505,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "ForexConversionService",
+    "subdomain": "International_NRI_Processing",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2704,
+    "testFileCount": 5,
+    "totalAssertions": 588,
+    "totalSetups": 28,
+    "totalVerifies": 28,
+    "issues": []
+  },
+  {
+    "service": "FemaComplianceService",
+    "subdomain": "International_NRI_Processing",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1656,
+    "testFileCount": 3,
+    "totalAssertions": 309,
+    "totalSetups": 24,
+    "totalVerifies": 26,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "NreAccountValidationService",
+    "subdomain": "International_NRI_Processing",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1639,
+    "testFileCount": 3,
+    "totalAssertions": 360,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "NriTaxationService",
+    "subdomain": "International_NRI_Processing",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2313,
+    "testFileCount": 4,
+    "totalAssertions": 438,
+    "totalSetups": 26,
+    "totalVerifies": 27,
+    "issues": []
+  },
+  {
+    "service": "MaturityDischargeFormService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2159,
+    "testFileCount": 4,
+    "totalAssertions": 486,
+    "totalSetups": 27,
+    "totalVerifies": 30,
+    "issues": []
+  },
+  {
+    "service": "KycVerificationService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2450,
+    "testFileCount": 5,
+    "totalAssertions": 637,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "DocumentArchivalService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1752,
+    "testFileCount": 3,
+    "totalAssertions": 390,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "WorkflowEscalationService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2042,
+    "testFileCount": 4,
+    "totalAssertions": 450,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": []
+  },
+  {
+    "service": "MakerCheckerValidationService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2085,
+    "testFileCount": 4,
+    "totalAssertions": 439,
+    "totalSetups": 28,
+    "totalVerifies": 28,
+    "issues": []
+  },
+  {
+    "service": "BankMandateService",
+    "subdomain": "Document_Workflow_Management",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1607,
+    "testFileCount": 3,
+    "totalAssertions": 313,
+    "totalSetups": 27,
+    "totalVerifies": 28,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "MaturityReinsuranceRecoveryService",
+    "subdomain": "Reinsurance_Pool_Management",
+    "pass": true,
+    "fileCount": 8,
+    "totalLines": 2524,
+    "testFileCount": 5,
+    "totalAssertions": 536,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "TreatyCalculationService",
+    "subdomain": "Reinsurance_Pool_Management",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2174,
+    "testFileCount": 4,
+    "totalAssertions": 431,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  },
+  {
+    "service": "ReinsurerNotificationService",
+    "subdomain": "Reinsurance_Pool_Management",
+    "pass": false,
+    "fileCount": 6,
+    "totalLines": 1848,
+    "testFileCount": 3,
+    "totalAssertions": 394,
+    "totalSetups": 25,
+    "totalVerifies": 25,
+    "issues": [
+      "Only 5 PR files (need 6+)"
+    ]
+  },
+  {
+    "service": "PoolAllocationService",
+    "subdomain": "Reinsurance_Pool_Management",
+    "pass": false,
+    "fileCount": 7,
+    "totalLines": 1770,
+    "testFileCount": 4,
+    "totalAssertions": 346,
+    "totalSetups": 26,
+    "totalVerifies": 27,
+    "issues": [
+      "PoolAllocationServiceEdgeTests.cs: 12 assertions (need 100+)"
+    ]
+  },
+  {
+    "service": "ReinsurerSettlementService",
+    "subdomain": "Reinsurance_Pool_Management",
+    "pass": true,
+    "fileCount": 7,
+    "totalLines": 2353,
+    "testFileCount": 4,
+    "totalAssertions": 598,
+    "totalSetups": 26,
+    "totalVerifies": 26,
+    "issues": []
+  }
+]

@@ -1,0 +1,418 @@
+{
+  "subdomains": [
+    {
+      "name": "SurrenderProcessing",
+      "services": [
+        {
+          "name": "PolicySurrenderService",
+          "description": "Orchestrates the overall policy surrender workflow and state transitions.",
+          "methodCount": 32,
+          "prCategory": "large",
+          "prType": "f2p"
+        },
+        {
+          "name": "SurrenderValueCalculationService",
+          "description": "Calculates guaranteed and special surrender values based on policy duration.",
+          "methodCount": 24,
+          "prCategory": "medium",
+          "prType": "enhancement"
+        },
+        {
+          "name": "SurrenderPenaltyService",
+          "description": "Determines penalties and deduction charges for early policy surrender.",
+          "methodCount": 18,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "PartialSurrenderService",
+          "description": "Handles rules and limits for partial withdrawals and surrenders.",
+          "methodCount": 22,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        },
+        {
+          "name": "SurrenderDisbursementService",
+          "description": "Manages the final disbursement process specific to surrendered policies.",
+          "methodCount": 26,
+          "prCategory": "medium",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "AnnuityProcessing",
+      "services": [
+        {
+          "name": "AnnuityCalculationService",
+          "description": "Calculates periodic annuity payout amounts based on accumulated corpus.",
+          "methodCount": 35,
+          "prCategory": "large",
+          "prType": "f2p"
+        },
+        {
+          "name": "AnnuityPayoutScheduleService",
+          "description": "Generates and maintains the monthly, quarterly, or annual payout schedules.",
+          "methodCount": 25,
+          "prCategory": "medium",
+          "prType": "enhancement"
+        },
+        {
+          "name": "DeferredAnnuityService",
+          "description": "Manages accumulation phases and vesting dates for deferred annuity plans.",
+          "methodCount": 20,
+          "prCategory": "small",
+          "prType": "new_feature"
+        },
+        {
+          "name": "PensionCommutationService",
+          "description": "Calculates lump sum withdrawal limits from pension policies upon maturity.",
+          "methodCount": 28,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "AnnuityLifeCertificateService",
+          "description": "Tracks and validates annual life certificates required for continuous annuity payouts.",
+          "methodCount": 16,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "JointLifeAnnuityService",
+          "description": "Calculates survivor benefits and secondary annuitant payout transitions.",
+          "methodCount": 24,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        }
+      ]
+    },
+    {
+      "name": "TaxDeductionsAndCompliance",
+      "services": [
+        {
+          "name": "TdsCalculationService",
+          "description": "Computes Tax Deducted at Source (TDS) for maturity and surrender payouts.",
+          "methodCount": 31,
+          "prCategory": "large",
+          "prType": "f2p"
+        },
+        {
+          "name": "CapitalGainsTaxService",
+          "description": "Calculates short-term and long-term capital gains on ULIP maturities.",
+          "methodCount": 22,
+          "prCategory": "medium",
+          "prType": "enhancement"
+        },
+        {
+          "name": "TaxExemptionEvaluationService",
+          "description": "Evaluates policies against section 10(10D) and other tax exemption rules.",
+          "methodCount": 19,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "FatcaComplianceService",
+          "description": "Ensures FATCA/CRS declaration compliance before high-value disbursements.",
+          "methodCount": 17,
+          "prCategory": "small",
+          "prType": "new_feature"
+        },
+        {
+          "name": "TaxReportingService",
+          "description": "Generates tax data extracts for regulatory authority submissions.",
+          "methodCount": 26,
+          "prCategory": "medium",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "Fund_Value_Unit_Linked_Plans",
+      "services": [
+        {
+          "name": "UlipNavCalculationService",
+          "description": "Retrieves and applies the correct Net Asset Value for maturity dates.",
+          "methodCount": 33,
+          "prCategory": "large",
+          "prType": "f2p"
+        },
+        {
+          "name": "UnitCancellationService",
+          "description": "Processes the cancellation of units across multiple funds at maturity.",
+          "methodCount": 25,
+          "prCategory": "medium",
+          "prType": "enhancement"
+        },
+        {
+          "name": "FundSwitchingService",
+          "description": "Handles automatic fund switches to debt/liquid funds as maturity approaches.",
+          "methodCount": 21,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "UlipMaturityService",
+          "description": "Consolidates fund values and mortality charge refunds for final ULIP payouts.",
+          "methodCount": 36,
+          "prCategory": "large",
+          "prType": "new_feature"
+        },
+        {
+          "name": "MortalityChargeRefundService",
+          "description": "Calculates refunds of mortality charges for applicable ULIP products.",
+          "methodCount": 18,
+          "prCategory": "small",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "PolicyLoanAndRecovery",
+      "services": [
+        {
+          "name": "OutstandingLoanRecoveryService",
+          "description": "Identifies active policy loans to be recovered from maturity proceeds.",
+          "methodCount": 24,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "LoanInterestCalculationService",
+          "description": "Calculates accrued interest on policy loans up to the maturity date.",
+          "methodCount": 20,
+          "prCategory": "small",
+          "prType": "enhancement"
+        },
+        {
+          "name": "MaturityLoanAdjustmentService",
+          "description": "Performs the net calculation of maturity value minus loan and interest.",
+          "methodCount": 27,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "PolicyPledgeService",
+          "description": "Verifies and clears assignments or pledges against the policy before payout.",
+          "methodCount": 19,
+          "prCategory": "small",
+          "prType": "new_feature"
+        },
+        {
+          "name": "LoanDischargeService",
+          "description": "Generates loan closure documentation upon successful recovery from maturity.",
+          "methodCount": 16,
+          "prCategory": "small",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "TerminalBonusAndLoyaltyAdditions",
+      "services": [
+        {
+          "name": "TerminalBonusService",
+          "description": "Calculates terminal or final additional bonuses declared at maturity.",
+          "methodCount": 23,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "LoyaltyAdditionService",
+          "description": "Computes loyalty additions for policies completing their full premium term.",
+          "methodCount": 21,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        },
+        {
+          "name": "GuaranteedAdditionService",
+          "description": "Calculates contractually guaranteed additions accrued over the policy term.",
+          "methodCount": 25,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "VestedBonusService",
+          "description": "Aggregates all simple or compound reversionary bonuses vested over the years.",
+          "methodCount": 38,
+          "prCategory": "large",
+          "prType": "enhancement"
+        },
+        {
+          "name": "ReversionaryBonusService",
+          "description": "Applies annual bonus rates to sum assured for participating policies.",
+          "methodCount": 26,
+          "prCategory": "medium",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "BeneficiaryAndLegalHeirs",
+      "services": [
+        {
+          "name": "LegalHeirValidationService",
+          "description": "Validates legal heir documentation when no nominee is present.",
+          "methodCount": 18,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "MinorNomineeTrusteeService",
+          "description": "Manages appointee details and payouts when the nominee is a minor.",
+          "methodCount": 22,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        },
+        {
+          "name": "BeneficiaryShareAllocationService",
+          "description": "Calculates split payouts for multiple beneficiaries based on percentage shares.",
+          "methodCount": 26,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "SuccessionCertificateService",
+          "description": "Verifies succession certificates for high-value un-nominated claims.",
+          "methodCount": 17,
+          "prCategory": "small",
+          "prType": "enhancement"
+        },
+        {
+          "name": "DisputeResolutionService",
+          "description": "Places maturity payouts on hold in case of legal disputes or rival claims.",
+          "methodCount": 31,
+          "prCategory": "large",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "International_NRI_Processing",
+      "services": [
+        {
+          "name": "NriRepatriationService",
+          "description": "Evaluates repatriation limits and rules for Non-Resident Indian policies.",
+          "methodCount": 23,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "ForexConversionService",
+          "description": "Applies current foreign exchange rates for payouts in foreign currencies.",
+          "methodCount": 34,
+          "prCategory": "large",
+          "prType": "new_feature"
+        },
+        {
+          "name": "FemaComplianceService",
+          "description": "Validates payouts against Foreign Exchange Management Act guidelines.",
+          "methodCount": 19,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "NreAccountValidationService",
+          "description": "Ensures payouts are directed to valid NRE/NRO bank accounts.",
+          "methodCount": 16,
+          "prCategory": "small",
+          "prType": "enhancement"
+        },
+        {
+          "name": "NriTaxationService",
+          "description": "Applies special DTAA and withholding tax rates for NRI customers.",
+          "methodCount": 27,
+          "prCategory": "medium",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "Document_Workflow_Management",
+      "services": [
+        {
+          "name": "MaturityDischargeFormService",
+          "description": "Generates and processes pre-filled maturity discharge vouchers.",
+          "methodCount": 24,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "KycVerificationService",
+          "description": "Verifies PAN, Aadhar, and other KYC documents before maturity settlement.",
+          "methodCount": 38,
+          "prCategory": "large",
+          "prType": "new_feature"
+        },
+        {
+          "name": "DocumentArchivalService",
+          "description": "Archives processed maturity claim documents to the enterprise repository.",
+          "methodCount": 20,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "WorkflowEscalationService",
+          "description": "Escalates pending maturity cases approaching regulatory turnaround times.",
+          "methodCount": 22,
+          "prCategory": "medium",
+          "prType": "f2p"
+        },
+        {
+          "name": "MakerCheckerValidationService",
+          "description": "Enforces dual-approval workflows for high-value maturity transactions.",
+          "methodCount": 25,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        },
+        {
+          "name": "BankMandateService",
+          "description": "Validates NACH and e-mandate records for direct account crediting.",
+          "methodCount": 18,
+          "prCategory": "small",
+          "prType": "f2p"
+        }
+      ]
+    },
+    {
+      "name": "Reinsurance_Pool_Management",
+      "services": [
+        {
+          "name": "MaturityReinsuranceRecoveryService",
+          "description": "Calculates the portion of maturity claims to be recovered from reinsurers.",
+          "methodCount": 32,
+          "prCategory": "large",
+          "prType": "f2p"
+        },
+        {
+          "name": "TreatyCalculationService",
+          "description": "Evaluates proportional and non-proportional treaty terms for maturities.",
+          "methodCount": 28,
+          "prCategory": "medium",
+          "prType": "new_feature"
+        },
+        {
+          "name": "ReinsurerNotificationService",
+          "description": "Sends automated bordereaux and claim notifications to reinsurance partners.",
+          "methodCount": 17,
+          "prCategory": "small",
+          "prType": "f2p"
+        },
+        {
+          "name": "PoolAllocationService",
+          "description": "Allocates maturity liabilities across multiple co-insurers or pools.",
+          "methodCount": 24,
+          "prCategory": "medium",
+          "prType": "enhancement"
+        },
+        {
+          "name": "ReinsurerSettlementService",
+          "description": "Reconciles and processes incoming payments from reinsurers for settled claims.",
+          "methodCount": 26,
+          "prCategory": "medium",
+          "prType": "f2p"
+        }
+      ]
+    }
+  ]
+}
